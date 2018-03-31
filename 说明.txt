@@ -1,0 +1,9 @@
+自己开发一个springboot-starter的步骤：
+1、新建哪一个项目。
+2、需要一个配置类，配置类里面需要装配好需要提供出去的类。
+3、在其他项目中引用，两种方式
+ 1）使用@Enable注解，使用@Import注解导入需要装配的类。
+ 2）在classpath:/META-INF/spring.factories创建该文件，文件中以org.springframework.boot.autoconfigure.EnableAutoConfiguration为key，
+ value为自己定义的配置类。例如：
+ org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+ com.wangwei.RedisAutoConfiguration

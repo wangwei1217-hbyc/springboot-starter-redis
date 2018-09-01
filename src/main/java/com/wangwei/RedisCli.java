@@ -13,7 +13,7 @@ public class RedisCli {
         config.setMaxTotal(100); // 设置最大连接数
         config.setMaxIdle(10); // 设置最大空闲连接数
 
-        JedisPool jedisPool=new JedisPool(config,"192.168.171.130",6379);
+        JedisPool jedisPool=new JedisPool(config,"192.168.71.130",6379);
 
         Jedis jedis=null;
         try{

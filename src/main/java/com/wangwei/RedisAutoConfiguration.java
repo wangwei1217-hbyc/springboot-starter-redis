@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.util.StringUtils;
 import redis.clients.jedis.Jedis;
 
 /**
@@ -18,7 +19,9 @@ public class RedisAutoConfiguration {
     @ConditionalOnMissingBean
     public Jedis createJedis(RedisProperties redisProperties){
         Jedis jedis = new Jedis(redisProperties.getHost(), redisProperties.getPort());
-        jedis.auth(redisProperties.getAuth());
+        if(!StringUtils.isEmpty(redisProperties.getAuth())){
+            jedis.auth(redisProperties.getAuth());
+        }
         return jedis;
 
     }

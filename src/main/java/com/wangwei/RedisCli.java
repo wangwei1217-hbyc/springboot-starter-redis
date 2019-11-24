@@ -13,13 +13,13 @@ public class RedisCli {
         config.setMaxTotal(100); // 设置最大连接数
         config.setMaxIdle(10); // 设置最大空闲连接数
 
-        JedisPool jedisPool=new JedisPool(config,"192.168.71.130",6379);
+        JedisPool jedisPool=new JedisPool(config,"127.0.0.1",6379);
 
         Jedis jedis=null;
         try{
             jedis=jedisPool.getResource(); // 获取连接
-            jedis.auth("root"); // 设置密码
-            //jedis.set("name", "java知识分享网"); // 设置值
+//            jedis.auth("root"); // 设置密码
+            jedis.set("wangwei", "huying"); // 设置值
             String value=jedis.get("wangwei"); // 获取值
             System.out.println(value);
 
